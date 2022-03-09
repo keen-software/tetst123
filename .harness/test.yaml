@@ -26,4 +26,4 @@ pipeline:
                                 spec:
                                     connectorRef: account.nofar_dockerhub
                                     image: alpine
-                                    command: echo "test"
+                                    command: echo "this is a new change"
