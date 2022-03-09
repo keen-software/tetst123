@@ -1,0 +1,29 @@
+pipeline:
+    name: test
+    identifier: test
+    allowStageExecutions: false
+    projectIdentifier: coke123
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: aaaa
+              identifier: aaa
+              type: CI
+              spec:
+                  cloneCodebase: false
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                          connectorRef: account.k8scluster
+                          namespace: aaa
+                  execution:
+                      steps:
+                          - step:
+                                type: Run
+                                name: echo
+                                identifier: echo
+                                spec:
+                                    connectorRef: account.nofar_dockerhub
+                                    image: alpine
+                                    command: echo "this is a new change"
