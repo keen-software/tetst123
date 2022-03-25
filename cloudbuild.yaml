@@ -1,5 +1,6 @@
-- name: 'ubuntu'
-  args: ['sleep', '1']
-  timeout: 500s
-- name: 'ubuntu'
-  args: ['echo', 'hello world, after 1s']
+steps:
+  - name: 'ubuntu'
+    args: ['sleep', '1']
+    timeout: 500s
+  - name: 'ubuntu'
+    args: ['echo', 'hello world, after 1s']
