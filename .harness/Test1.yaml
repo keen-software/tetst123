@@ -1,0 +1,38 @@
+pipeline:
+    name: Test1
+    identifier: Test1
+    projectIdentifier: CI_Demos_new_gitX
+    orgIdentifier: default
+    tags: {}
+    properties:
+        ci:
+            codebase:
+                connectorRef: account.Nofar_Github
+                repoName: tetst123
+                build: <+input>
+    stages:
+        - stage:
+              name: S1
+              identifier: S1
+              type: CI
+              spec:
+                  cloneCodebase: true
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                          connectorRef: account.k8scluster
+                          namespace: harness-delegate-pmdemo
+                          automountServiceAccountToken: true
+                          nodeSelector: {}
+                          os: Linux
+                  execution:
+                      steps:
+                          - step:
+                                type: Run
+                                name: echo
+                                identifier: echo
+                                spec:
+                                    connectorRef: account.nofar_dockerhub
+                                    image: alpine
+                                    shell: Sh
+                                    command: echo "aaa"
